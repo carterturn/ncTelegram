@@ -271,17 +271,17 @@ class MessageSendWidget(urwid.Filler):
             self.widgetEdit.set_edit_pos(cursor_pos - i)
 
         # gives the focus to the message list
-        elif key == 'up' or key == 'page up' or key == 'esc':
+        elif key == self.Telegram_ui.conf['keymap']['focus_message_list']:
             self.Telegram_ui.right_side.focus_position = 0
 
-        elif key == 'left':
+        elif key == self.Telegram_ui.conf['keymap']['focus_chanlist']:
             self.Telegram_ui.main_columns.focus_position = 0
 
         # navigation in your own history
-        elif key == 'shift up':
+        elif key == self.Telegram_ui.conf['keymap']['history_prev']:
             self.history_prev()
 
-        elif key == 'shift down':
+        elif key == self.Telegram_ui.conf['keymap']['history_next']:
             self.history_next()
 
         else:
