@@ -243,15 +243,16 @@ class MessageSendWidget(urwid.Filler):
             self.widgetEdit.insert_text("\n")
 
         # Autocompletion
-        elif key == 'tab' and self.widgetEdit.get_edit_text().rsplit(' ', 1)[-1].startswith("@"):
+        elif (key == self.Telegram_ui.conf['keymap']['autocomplete']
+              and self.widgetEdit.get_edit_text().rsplit(' ', 1)[-1].startswith("@")):
             self.autocomplete()
 
         # deletion of current text
-        elif key == 'ctrl u':
+        elif key == self.Telegram_ui.conf['keymap']['clear_line']:
             self.widgetEdit.set_edit_text("")
 
         # deletion of characters left of the cursor until the next stop character
-        elif key == 'ctrl w':
+        elif key == self.Telegram_ui.conf['keymap']['clear_word']:
             STOPCHARACTERS = r'[\s\W]'
 
             edit_text = self.widgetEdit.get_edit_text()
